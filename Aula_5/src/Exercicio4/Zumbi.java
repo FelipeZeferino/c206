@@ -7,9 +7,11 @@ public class Zumbi {
     double mostraVida(){
         return vida;
     }
-    void transfereVida(Zumbi zumbiAlvo, double quantia) {
+    boolean transfereVida(Zumbi zumbiAlvo, double quantia) {
         if (vida >= quantia)
         {
         vida -= quantia;
-        zumbiAlvo.vida += quantia;}
+        zumbiAlvo.vida += quantia;
+        return true;}
+        return false;
 }}

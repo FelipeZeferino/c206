@@ -15,34 +15,19 @@ public class Main {
 
         Usuario user = new Usuario(Redes);
 
-        for (int i = 0; i < user.redesSociais.length; i++) {
-            if(user.redesSociais[i] instanceof Facebook){
-                user.redesSociais[i].postarFoto();
-                user.redesSociais[i].postarVideo();
-                user.redesSociais[i].postarComentario();
-                user.redesSociais[i].curtirPublicacao();
-                ((Facebook) user.redesSociais[i]).fazStreaming();
-            }
-            if (user.redesSociais[i] instanceof Instagram){
-                user.redesSociais[i].postarFoto();
-                user.redesSociais[i].postarVideo();
-                user.redesSociais[i].postarComentario();
-                user.redesSociais[i].curtirPublicacao();
-            }
-            if (user.redesSociais[i] instanceof Twitter){
-                user.redesSociais[i].postarFoto();
-                user.redesSociais[i].postarVideo();
-                user.redesSociais[i].postarComentario();
-                user.redesSociais[i].curtirPublicacao();
-                ((Twitter) user.redesSociais[i]).compartilhar();
-            }
-            if (user.redesSociais[i] instanceof GooglePlus){
-                user.redesSociais[i].postarFoto();
-                user.redesSociais[i].postarVideo();
-                user.redesSociais[i].postarComentario();
-                user.redesSociais[i].curtirPublicacao();
-                ((GooglePlus) user.redesSociais[i]).fazStreaming();
-                ((GooglePlus) user.redesSociais[i]).compartilhar();
+        for (RedeSocial rede : user.redes) {
+            rede.postarFoto();
+            rede.postarVideo();
+            rede.postarComentario();
+            rede.curtirPublicacao();
+
+            if (rede instanceof Facebook) {
+                ((Facebook) rede).fazStreaming();
+            } else if (rede instanceof Twitter) {
+                ((Twitter) rede).compartilhar();
+            } else if (rede instanceof GooglePlus) {
+                ((GooglePlus) rede).fazStreaming();
+                ((GooglePlus) rede).compartilhar();
             }
         }
     }
